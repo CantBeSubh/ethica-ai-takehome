@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     const response = await fetch(
         "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english",
         {
-            headers: { Authorization: "Bearer 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" },
+            headers: { Authorization: `Bearer ${process.env.HF_API_KEY}` },
             method: "POST",
             body: JSON.stringify(input),
         }
