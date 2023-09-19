@@ -13,12 +13,20 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { BotIcon } from "lucide-react"
+
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+} from "@/components/ui/alert"
 
 export function InputModal() {
     const handleClick = async (e: React.MouseEvent) => {
         e.preventDefault();
         // console.log(input);
         try {
+            setLoading(true);
             const response = await fetch("/api/analyse", {
                 method: "POST",
                 headers: {
@@ -27,17 +35,19 @@ export function InputModal() {
                 body: JSON.stringify({ input }),
             });
             const data = await response.json();
-            const sentiment = data.sentiment;
-            console.log(sentiment);
+            setSentiment(data.sentiment);
+            console.log(data.sentiment);
         }
         catch (err) {
             console.log(err);
         }
         finally {
-            setInput("")
+            setLoading(false);
         }
     }
     const [input, setInput] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [sentiment, setSentiment] = useState("");
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -47,17 +57,39 @@ export function InputModal() {
                 <AlertDialogHeader>
                     <AlertDialogTitle>Add a Review?</AlertDialogTitle>
                     <AlertDialogDescription>
-                        {/* Enter a review for this movie. */}
                         <Input
                             placeholder="Enter your review here"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                         />
                     </AlertDialogDescription>
+                    {sentiment &&
+                        <>
+                            {/* @ts-ignore */}
+                            <Alert variant={sentiment.toLowerCase() || "neutral"}>
+                                <BotIcon className="h-4 w-4" />
+                                <AlertTitle>Heads up!</AlertTitle>
+                                <AlertDescription>
+                                    Your Review was {sentiment.toLowerCase() == "positive" ? "positive 🤗" : "negative 🥲"}
+                                </AlertDescription>
+                            </Alert>
+                        </>
+                    }
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={(e) => handleClick(e)}>Analyse</AlertDialogAction>
+                    <AlertDialogCancel
+                        disabled={loading}
+                        onClick={() => {
+                            setInput("");
+                            setSentiment("");
+                        }}
+                    >
+                        Cancel
+                    </AlertDialogCancel>
+                    <AlertDialogAction
+                        onClick={(e) => handleClick(e)}
+                        disabled={loading}
+                    >Analyse</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
