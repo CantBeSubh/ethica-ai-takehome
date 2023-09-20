@@ -20,12 +20,20 @@
 - [x] Each analyzed review is added to a table, along with the date and time of the review.
 - [x] The user should be able to upvote/downvote the review, and all reviews in the table are sorted by the number of votes.
 - [x] Used [Zustand](https://zustand-demo.pmnd.rs/) and LocalStorage for state management
+### Extra
+- [x] Dark/Light Theme Switch
+- [x] Pagination
+- [x] Hide Column
 
 ## Deliverables
 ### Describe a limitation of your application?
+The web app is not mobile responsive.
 
 ### If given more time, what features would you like to add? 
-
+1. Ssecure authentication system
+2. Databse instad of localStorage
+3. Custom rate limiting
+   
 - [x] Github - [@cantbesubh/ethica-ai-takehome](https://github.com/CantBeSubh/ethica-ai-takehome)
 - [x] Vercel Live Link - https://ethica-ai-takehome.vercel.app/
 
