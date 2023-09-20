@@ -5,7 +5,9 @@ import { useReviews } from "@/state/use-reviews";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { BotIcon } from "lucide-react"
+import toast from "react-hot-toast";
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import {
     AlertDialog,
     AlertDialogAction,
@@ -17,12 +19,6 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-} from "@/components/ui/alert"
-
 
 export function InputModal() {
     const { addReview } = useReviews();
@@ -53,6 +49,7 @@ export function InputModal() {
             addReview(review);
         }
         catch (err) {
+            toast.error("Something went wrong");
             console.log(err);
         }
         finally {
@@ -79,7 +76,7 @@ export function InputModal() {
                         <>
                             {/* @ts-ignore */}
                             <Alert variant={sentiment.toLowerCase() || "neutral"}>
-                                <BotIcon className="h-4 w-4" />
+                                <BotIcon className="w-4 h-4" />
                                 <AlertTitle>Heads up!</AlertTitle>
                                 <AlertDescription>
                                     Your Review was {
