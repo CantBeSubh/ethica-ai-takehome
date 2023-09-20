@@ -20,8 +20,15 @@ import {
     AlertDescription,
     AlertTitle,
 } from "@/components/ui/alert"
+import { useReviews } from "@/state/use-reviews";
 
 export function InputModal() {
+    const { addReview } = useReviews();
+
+    const [input, setInput] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [sentiment, setSentiment] = useState("");
+
     const handleClick = async (e: React.MouseEvent) => {
         e.preventDefault();
         // console.log(input);
@@ -36,7 +43,15 @@ export function InputModal() {
             });
             const data = await response.json();
             setSentiment(data.sentiment);
-            console.log(data.sentiment);
+            const review = {
+                input,
+                sentiment: data.sentiment.toLowerCase(),
+                iat: new Date(),
+                up: 0,
+                down: 0
+            }
+            // console.log(review);
+            addReview(review);
         }
         catch (err) {
             console.log(err);
@@ -45,9 +60,7 @@ export function InputModal() {
             setLoading(false);
         }
     }
-    const [input, setInput] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [sentiment, setSentiment] = useState("");
+
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>

@@ -12,6 +12,8 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import { useReviews } from "@/state/use-reviews"
+
 export type Review = {
     input: string,
     sentiment: "positive" | "negative" | "neutral",
@@ -100,8 +102,9 @@ export const columns: ColumnDef<Review>[] = [
         id: "actions",
         header: "Actions",
         cell: ({ row }) => {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const { upvoteReview, downvoteReview } = useReviews();
             const review = row.original
-
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -118,11 +121,16 @@ export const columns: ColumnDef<Review>[] = [
                             Copy Review
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Upvote</DropdownMenuItem>
-                        <DropdownMenuItem>Downvote</DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={() => upvoteReview(review.iat)}
+                        >Upvote</DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={() => downvoteReview(review.iat)}
+                        >
+                            Downvote</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )
-        },
+        }
     },
 ]
