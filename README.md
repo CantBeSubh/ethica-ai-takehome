@@ -1,8 +1,7 @@
 # Ethica AI Take Home Assessment
 > **Objective**: Build a movie review web application using React and node.js that allows users to input a movie review, generate a sentiment analysis of the review, and store that in a table for others to agree/disagree with.
 
-[Visit Live](https://ethica-ai-takehome.vercel.app/)  ||
-[YT Video Demo](https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley)
+[Visit Live](https://ethica-ai-takehome.vercel.app/) 
 
 ## How to run locally?
 1. Clone the repo
