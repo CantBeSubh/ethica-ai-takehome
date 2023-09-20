@@ -1,5 +1,11 @@
 "use client";
 import { useState } from "react"
+import { useReviews } from "@/state/use-reviews";
+
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { BotIcon } from "lucide-react"
+
 import {
     AlertDialog,
     AlertDialogAction,
@@ -11,27 +17,21 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { BotIcon } from "lucide-react"
-
 import {
     Alert,
     AlertDescription,
     AlertTitle,
 } from "@/components/ui/alert"
-import { useReviews } from "@/state/use-reviews";
+
 
 export function InputModal() {
     const { addReview } = useReviews();
-
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [sentiment, setSentiment] = useState("");
 
     const handleClick = async (e: React.MouseEvent) => {
         e.preventDefault();
-        // console.log(input);
         try {
             setLoading(true);
             const response = await fetch("/api/analyse", {
@@ -50,7 +50,6 @@ export function InputModal() {
                 up: 0,
                 down: 0
             }
-            // console.log(review);
             addReview(review);
         }
         catch (err) {
