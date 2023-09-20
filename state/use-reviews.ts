@@ -14,6 +14,7 @@ interface ReviewsStore {
 }
 
 export const useReviews = create(
+    // presist the store in local storage
     persist<ReviewsStore>(
         (set) => ({
             reviews: [],
