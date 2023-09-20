@@ -51,7 +51,7 @@ export function InputModal() {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="outline">Add Review</Button>
+                <Button variant="default">Add Review</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
@@ -70,7 +70,13 @@ export function InputModal() {
                                 <BotIcon className="h-4 w-4" />
                                 <AlertTitle>Heads up!</AlertTitle>
                                 <AlertDescription>
-                                    Your Review was {sentiment.toLowerCase() == "positive" ? "positive 🤗" : "negative 🥲"}
+                                    Your Review was {
+                                        {
+                                            "positive": "positive 🤗",
+                                            "negative": "negative 😡",
+                                            "neutral": "neutral 🤔"
+                                        }[sentiment.toLowerCase()] || "neutral 🤔"
+                                    }
                                 </AlertDescription>
                             </Alert>
                         </>
