@@ -1,6 +1,8 @@
 "use client"
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
 import { ChevronDown } from 'lucide-react'
+
 import {
     ColumnDef,
     flexRender,
@@ -12,22 +14,9 @@ import {
     VisibilityState
 } from "@tanstack/react-table"
 
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
-import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuCheckboxItem,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 
 interface DataTableProps<TData, TValue> {
@@ -89,7 +78,7 @@ export function DataTable<TData, TValue>({
                 </DropdownMenu>
             </div>
 
-            <div className="rounded-md border">
+            <div className="border rounded-md">
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
@@ -133,7 +122,7 @@ export function DataTable<TData, TValue>({
                     </TableBody>
                 </Table>
             </div>
-            <div className="flex items-center justify-end space-x-2 py-4">
+            <div className="flex items-center justify-end py-4 space-x-2">
                 <Button
                     variant="outline"
                     size="sm"
