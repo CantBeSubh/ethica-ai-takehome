@@ -17,7 +17,7 @@ export default function Home() {
     return (
         <main className='flex justify-center items-center h-full w-full'>
             <div className='flex flex-col items-start p-8'>
-                <div className='pb-4 z-5'>
+                <div className='pb-4 z-50'>
                     <InputModal />
                 </div>
                 <DataTable columns={columns} data={reviews} />
