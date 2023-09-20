@@ -43,7 +43,7 @@ git clone https://github.com/CantBeSubh/ethica-ai-takehome.git
 - [x] Hide Column(s)
 
 ## Deliverables
-- Github - [@cantbesubh/ethica-ai-takehome](https://github.com/CantBeSubh/ethica-ai-takehome)
+- Github - [@CantBeSubh/ethica-ai-takehome](https://github.com/CantBeSubh/ethica-ai-takehome)
 - Vercel Live Deployment - https://ethica-ai-takehome.vercel.app/
 ### Describe a limitation of your application.
 The web app meets the functional requirements, but it has some areas for improvement. One of them is the mobile responsiveness, the website works well on tablets and PCs, but not on mobile devices. Another one is the use of Zustand, which forced me to use 'use client' for the main `page.tsx` component. This prevented me from using Server Side Rendering, which could have improved the performance.
