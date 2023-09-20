@@ -48,7 +48,7 @@ git clone https://github.com/CantBeSubh/ethica-ai-takehome.git
 - Github - [@CantBeSubh/ethica-ai-takehome](https://github.com/CantBeSubh/ethica-ai-takehome)
 - Vercel Live Deployment - https://ethica-ai-takehome.vercel.app/
 ### Describe a limitation of your application.
-The web app meets the functional requirements, but it has some areas for improvement. One of them is the mobile responsiveness, the website works well on tablets and PCs, but not on mobile devices. Another one is the use of Zustand, which forced me to use _'use client'_ for the main `page.tsx` component. This prevented me from using Server Side Rendering, which could have improved the performance. Rather, I could have implemented such that the review gets an upvote/downvote by directly clicking its count. Lastly, there was an ES-Lint error, for which I failed to find a solution, other than disabling it. It says 'eslint-disable-next-line react-hooks/rules-of-hooks' on line 108 of `columns.tsx`.
+The web app meets the functional requirements, but it has some areas for improvement. One of them is the mobile responsiveness, the website works well on tablets and PCs, but not on mobile devices. Another one is the use of Zustand, which forced me to use _'use client'_ for the main `page.tsx` component. This prevented me from using Server Side Rendering, which could have improved the performance. Lastly, there was an ES-Lint error, for which I failed to find a solution, other than disabling it. It says 'eslint-disable-next-line react-hooks/rules-of-hooks' on line 108 of `columns.tsx`.
 
 ### If given more time, what features would you like to add? 
 To improve the security and functionality of my web application, I would implement the following features:
