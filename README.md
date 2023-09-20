@@ -8,7 +8,7 @@
 ```
 git clone https://github.com/CantBeSubh/ethica-ai-takehome.git
 ```
-2. Create an account on Hugging Face.
+2. Create an account on [Hugging Face](https://huggingface.co/).
 3. Click this [link](https://huggingface.co/settings/tokens) to generate a secret token.
 4. Rename `.env.example` to `.env`
 5. Replace `HF_API_KEY` with the secret key you generated
