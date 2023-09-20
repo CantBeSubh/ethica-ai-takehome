@@ -1,6 +1,6 @@
 'use client'
 import { InputModal } from '@/components/input-modal'
-import { columns, type Review } from '@/components/reviews/columns'
+import { columns } from '@/components/reviews/columns'
 import { DataTable } from '@/components/reviews/data-table'
 import { useReviews } from '@/state/use-reviews'
 import { useState, useEffect } from 'react'
@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 export default function Home() {
     const { reviews } = useReviews()
 
+    // This is a hack to prevent the table from rendering before the data is fetched. Without this, the table will render with Hydration Mismatch errors.
     const [mounted, setMounted] = useState(false)
     useEffect(() => {
         setMounted(true)
@@ -15,9 +16,9 @@ export default function Home() {
     if (!mounted) return null
 
     return (
-        <main className='flex justify-center items-center h-full w-full'>
+        <main className='flex items-center justify-center w-full h-full'>
             <div className='flex flex-col items-start p-8'>
-                <div className='pb-4 z-50'>
+                <div className='z-50 pb-4'>
                     <InputModal />
                 </div>
                 <DataTable columns={columns} data={reviews} />

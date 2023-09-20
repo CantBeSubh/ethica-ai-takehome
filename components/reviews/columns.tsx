@@ -1,5 +1,5 @@
 "use client"
-
+//https://ui.shadcn.com/docs/components/data-table
 import { ColumnDef } from "@tanstack/react-table"
 import { useReviews } from "@/state/use-reviews"
 import { Button } from "@/components/ui/button"
@@ -28,6 +28,7 @@ export const columns: ColumnDef<Review>[] = [
         accessorKey: "input",
         header: "Review",
         cell: ({ row }) => (
+            // Line Clamp 1 is a utility class that truncates the text to 1 line and adds an ellipsis(...) at the end.
             <div className="line-clamp-1 ">
                 {row.getValue("input") as string}
             </div>
@@ -70,6 +71,7 @@ export const columns: ColumnDef<Review>[] = [
     {
         accessorKey: "up",
         header: ({ column }) => (
+            // Toggle sorting on click
             <Button
                 variant="ghost"
                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
@@ -87,6 +89,7 @@ export const columns: ColumnDef<Review>[] = [
     {
         accessorKey: "down",
         header: ({ column }) => (
+            // Toggle sorting on click
             <Button
                 variant="ghost"
                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
@@ -105,6 +108,7 @@ export const columns: ColumnDef<Review>[] = [
         id: "actions",
         header: "Actions",
         cell: ({ row }) => {
+            //TODO FIXME
             // eslint-disable-next-line react-hooks/rules-of-hooks
             const { upvoteReview, downvoteReview, deleteReview } = useReviews();
             const review = row.original as Review

@@ -1,4 +1,5 @@
 "use client";
+//https://ui.shadcn.com/docs/components/alert-dialog
 import { useState } from "react"
 import { useReviews } from "@/state/use-reviews";
 
@@ -21,15 +22,16 @@ import {
 } from "@/components/ui/alert-dialog"
 
 export function InputModal() {
-    const { addReview } = useReviews();
+    const { addReview } = useReviews(); //Zustand hook
+    // States for the input and loading
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [sentiment, setSentiment] = useState("");
 
     const handleClick = async (e: React.MouseEvent) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevents the default form behaviour of the button
         try {
-            setLoading(true);
+            setLoading(true); // Sets the loading state to true, so that the buttons are disabled
             const response = await fetch("/api/analyse", {
                 method: "POST",
                 headers: {
@@ -49,11 +51,11 @@ export function InputModal() {
             addReview(review);
         }
         catch (err) {
-            toast.error("Something went wrong");
+            toast.error("Something went wrong"); // Toasts an error message
             console.log(err);
         }
         finally {
-            setLoading(false);
+            setLoading(false); // Sets the loading state to false, so that the buttons are enabled
         }
     }
 
@@ -72,10 +74,10 @@ export function InputModal() {
                             onChange={(e) => setInput(e.target.value)}
                         />
                     </AlertDialogDescription>
+                    {/* If only sentiment is there */}
                     {sentiment &&
                         <>
-                            {/* @ts-ignore */}
-                            <Alert variant={sentiment.toLowerCase() || "neutral"}>
+                            <Alert variant={sentiment.toLowerCase() as "positive" | "negative" | "neutral"}>
                                 <BotIcon className="w-4 h-4" />
                                 <AlertTitle>Heads up!</AlertTitle>
                                 <AlertDescription>
@@ -84,7 +86,7 @@ export function InputModal() {
                                             "positive": "positive 🤗",
                                             "negative": "negative 😡",
                                             "neutral": "neutral 🤔"
-                                        }[sentiment.toLowerCase()] || "neutral 🤔"
+                                        }[sentiment.toLowerCase()] || "neutral 🤔" // Error handling
                                     }
                                 </AlertDescription>
                             </Alert>
@@ -95,6 +97,7 @@ export function InputModal() {
                     <AlertDialogCancel
                         disabled={loading}
                         onClick={() => {
+                            // Resets the input and sentiment states
                             setInput("");
                             setSentiment("");
                         }}
