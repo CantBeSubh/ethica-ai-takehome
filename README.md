@@ -1,5 +1,9 @@
 # Ethica AI Take Home Assessment
 ![image](https://github.com/CantBeSubh/ethica-ai-takehome/assets/83113185/64ad676f-330b-46dc-b051-980fdc6178a5)
+![image](https://github.com/CantBeSubh/ethica-ai-takehome/assets/83113185/17feff5c-fec0-446f-b72c-0256e8f7c0dc)
+![image](https://github.com/CantBeSubh/ethica-ai-takehome/assets/83113185/a1b699d4-f140-43b2-bd5b-138f3096571a)
+![image](https://github.com/CantBeSubh/ethica-ai-takehome/assets/83113185/70846997-7c70-4339-a58c-de3dc9cadc7b)
+
 
 > **Objective**: Build a movie review web application using React and node.js that allows users to input a movie review, generate a sentiment analysis of the review, and store that in a table for others to agree/disagree with.
 
