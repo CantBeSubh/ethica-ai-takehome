@@ -6,7 +6,8 @@ interface ReviewsStore {
     reviews: Review[];
     addReview: (review: Review) => void;
     upvoteReview: (iat: Date) => void;
-    downvoteReview: (id: Date) => void;
+    downvoteReview: (iat: Date) => void;
+    deleteReview: (iat: Date) => void;
 }
 
 export const useReviews = create<ReviewsStore>((set) => ({
@@ -36,5 +37,9 @@ export const useReviews = create<ReviewsStore>((set) => ({
                     }
                     : review
             ),
+        })),
+    deleteReview: (iat) =>
+        set((state) => ({
+            reviews: state.reviews.filter((review) => review.iat !== iat),
         })),
 }));

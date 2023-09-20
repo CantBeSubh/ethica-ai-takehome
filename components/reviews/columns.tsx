@@ -103,7 +103,7 @@ export const columns: ColumnDef<Review>[] = [
         header: "Actions",
         cell: ({ row }) => {
             // eslint-disable-next-line react-hooks/rules-of-hooks
-            const { upvoteReview, downvoteReview } = useReviews();
+            const { upvoteReview, downvoteReview, deleteReview } = useReviews();
             const review = row.original
             return (
                 <DropdownMenu>
@@ -119,6 +119,11 @@ export const columns: ColumnDef<Review>[] = [
                             onClick={() => navigator.clipboard.writeText(review.input)}
                         >
                             Copy Review
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={() => deleteReview(review.iat)}
+                        >
+                            Delete Review
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
