@@ -15,12 +15,14 @@ export default function Home() {
   if (!mounted) return null
 
   return (
-    <main className='justify-start flex flex-col items-center p-8'>
-      <div className='pb-4 z-50 flex justify-between  items-start'>
-        <InputModal />
-        <div></div>
+    <main className='flex justify-center items-center h-full w-full'>
+      <div className='flex flex-col items-start p-8'>
+        <div className='pb-4 z-5'>
+          <InputModal />
+        </div>
+        <DataTable columns={columns} data={reviews} />
       </div>
-      <DataTable columns={columns} data={reviews} />
     </main>
+
   )
 }
