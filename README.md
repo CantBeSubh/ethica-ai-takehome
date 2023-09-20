@@ -30,6 +30,7 @@ git clone https://github.com/CantBeSubh/ethica-ai-takehome.git
 3. ShadcnUI / TailwindCSS
 4. Zustand
 5. Typescript
+6. React Hot Toast
 
 ## Functionality
 - [x] Button labelled “Add Review”, opens a textbox where users can input text.
